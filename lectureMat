@@ -1,0 +1,11 @@
+import sys
+
+i=0
+with open("matrice.txt") as f:
+	content = f.readlines()
+content = [x.strip() for x in content] 
+for line in content:
+	for case in line.split(' '):
+		i+=1
+	print(i)
+	i=0
