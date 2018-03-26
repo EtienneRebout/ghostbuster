@@ -20,10 +20,10 @@ public:
 	bool BougerDroite();
 	bool BougerGauche();
 
-	int GetX();
-	int GetY();
-	int GetOldX();
-	int GetOldY();
+	int GetX() const;
+	int GetY() const;
+	int GetOldX() const;
+	int GetOldY() const;
 
 	void SetX(int X);
 	void SetY(int Y);

@@ -15,6 +15,20 @@ Fantome::Fantome(int X, int Y, Pacman* Pac) : Personnage(X, Y)
 	Pacman_ = Pac;
 }
 
+Fantome::Fantome(int X, int Y, int Xold, int Yold, Pacman* Pac) : Personnage(X, Y)
+{
+	X_ = X;
+	Y_ = Y;
+	Xold_ = Xold;
+	Yold_ = Yold;
+	Pacman_ = Pac;
+}
+
+Fantome Fantome::clone()
+{
+	return new Fantome(X_, Y_, Xold_, Yold_, Pacman_);
+}
+
 bool Fantome::BougerRandom(int Random)
 {
 	Bouger_ = false;
@@ -226,4 +240,7 @@ bool Fantome::BougerFuite(int Random)
 
 	return Bouger_;
 }
+
+
+
 

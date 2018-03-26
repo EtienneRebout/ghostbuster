@@ -317,11 +317,11 @@ int main(int argc, char *argv[])
         {
             if (NbPoints == 0)
             {
-                AfficherImage(ImageGagne, 30, 140);
+                AfficherImage(ImageGagne, 60, 280);
             }
             else
             {
-                AfficherImage(ImagePerdu, 90, 140);
+                AfficherImage(ImagePerdu, 60, 280);
             }
             //Attendre un peu
             RafraichirFenetre();

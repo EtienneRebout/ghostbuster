@@ -14,9 +14,11 @@ private:
 	Pacman pac;
 	array<array<Objet>> niveau;
 	int profondeur;
-	bool hasParent;
-	Node parent;
+	const Node& parent;
+	bool ghostNode;
+	double proba;
 public:
+	const Node& getParent() const;
 	
 };
 
