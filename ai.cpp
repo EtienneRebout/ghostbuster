@@ -5,6 +5,7 @@
 #include "Fantome.h"
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
 
@@ -12,12 +13,23 @@ Evenement ChoisirEvenement()
 {
 	Evenement e = EVAucun;
 	
-	int profondeur;
-
-
+	
+	
+	Node root = new Node(
 	
 	return e;
 }
+
+
+
+
+void ChoisirRec(Objet** Tab, int profondeur)
+{
+	
+}
+
+
+
 
 void MatriceAdj()
 {
@@ -56,7 +68,9 @@ void MatriceAdj()
 		}	
 	}
 
-	int Mat[cpt+1][cpt+1];
+	int** Mat = new int*[cpt+1];
+	for(int i = 0; i < cpt+1; i++)
+    	Mat[i] = new int[cpt+1];
 
 	for(int i = 0; i < cpt+1; i++)
 	{
@@ -108,25 +122,33 @@ void MatriceAdj()
 	}
 
 
-	for(int k = 1; k < cpt; k++)
+	for(int k = 0; k < cpt; k++)
 	{
-		for(int i = 1; i < cpt; i++)
+		for(int i = 0; i < cpt; i++)
 		{
-			for(int j = 1; j < cpt; j++)
+			for(int j = 0; j < cpt; j++)
 				Mat[i][j] = min(Mat[i][j],Mat[i][k]+Mat[k][j]);
 		}	
 	}
 
 	ofstream matrice;
 	matrice.open("matrice.txt");
-	for(int i = 1; i < cpt; i++)
+	for(int i = 0; i < cpt; i++)
 	{
-		for(int j = 1; j < cpt; j++)
+		for(int j = 0; j < cpt; j++)
 		{
-			matrice << Mat[i][j] << "  ";
+			matrice << Mat[i][j] << " ";
 		}	
 		matrice << endl;
-	}
+	}/*
+	for(int i = 0; i < Hauteur; i++)
+	{
+		for(int j = 0; j < Largeur; j++)
+		{
+			matrice << TableauCopieCopie[i][j] << " ";
+		}	
+		matrice << endl;
+	}*/
 	matrice.close();
 }
 

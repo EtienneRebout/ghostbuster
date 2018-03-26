@@ -26,7 +26,7 @@
 #include <iostream>
 #include "sdlclg.h"
 
-SDL_Surface *ecran = 0;
+SDL_Surface *ecran = nullptr;
 vector<SDL_Surface*> Images;
 
 inline void VerifierErreur(bool Test, string Msg)

@@ -5,13 +5,17 @@
 #ifndef CONSTANTES_H
 #define CONSTANTES_H
 
+#include <array>
+
+using namespace std;
+
 //Déclarations de constantes requises pour le jeu
-const int Largeur = 19;
-const int Hauteur = 21;
-const int NbPixelsParCase = 32;
+constexpr int Largeur = 19;
+constexpr int Hauteur = 21;
+constexpr int NbPixelsParCase = 32;
 //Ajoutez vos propres constantes ici...
-const int VitesseFantome = 6; // Bougent à tous les 10 tours
-const int MurMince = 4;
+constexpr int VitesseFantome = 6; // Bougent à tous les 10 tours
+constexpr int MurMince = 4;
 
 const int TEMPS_FUITE = 150;
 
@@ -20,7 +24,7 @@ const int TEMPS_FUITE = 150;
 enum Objet {M, V, P, W};
 
 //Tableau de la carte
-static Objet Tableau[Hauteur][Largeur] =
+static array<array<Objet,Hauteur>,Largeur> Tableau =
 {
 	{ M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M},
 	{ M, P, P, P, P, P, P, P, P, M, P, P, P, P, P, P, P, P, M},
@@ -45,7 +49,7 @@ static Objet Tableau[Hauteur][Largeur] =
 	{ M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M},
 };
 
-const Objet TableauCopie[Hauteur][Largeur] =
+constexpr Objet TableauCopie[Hauteur][Largeur] =
 {
 	{ M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M},
 	{ M, P, P, P, P, P, P, P, P, M, P, P, P, P, P, P, P, P, M},
