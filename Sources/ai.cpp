@@ -116,7 +116,7 @@ int heuristique()
 {
 
 }
-
+/*
 int main(int argc, char *argv[])
 {
 	cout << "Calculating adjacency matrix..." << endl;
@@ -124,3 +124,4 @@ int main(int argc, char *argv[])
 	cout << "Done !" << endl;
 	
 }
+*/

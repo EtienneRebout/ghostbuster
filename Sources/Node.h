@@ -1,28 +1,19 @@
-#ifndef NODE_H
-#define NODE_H
+//
+// Created by etienne on 26/05/18.
+//
 
-#include "Pacman.h"
-#include "Personnage.h"
-#include <vector>
+#ifndef GHOSTBUSTER_NODE_H
+#define GHOSTBUSTER_NODE_H
 
-using namespace std;
 
-class Node
-{
+class Node {
 private:
-	array<Fantome> fantomes;
-	Pacman pac;
-	array<array<Objet>> niveau;
-	int profondeur;
-	const Node& parent;
-	bool ghostNode;
-	double proba;
-	double possib;
+    int heuristique;
 public:
-	const Node& getParent() const;
-	
+    void setH(int h);
+    int getH();
+    void plusPossib();
 };
 
-#endif // NODE_H
 
-
+#endif //GHOSTBUSTER_NODE_H
