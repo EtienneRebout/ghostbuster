@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/ghostbuster.dir/ai.cpp.o CMakeFiles/ghostbuster.dir/Fantome.cpp.o CMakeFiles/ghostbuster.dir/main.cpp.o CMakeFiles/ghostbuster.dir/Pacman.cpp.o CMakeFiles/ghostbuster.dir/Personnage.cpp.o CMakeFiles/ghostbuster.dir/sdlclg.cpp.o  -o ghostbuster 

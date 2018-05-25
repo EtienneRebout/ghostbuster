@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ghostbuster"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/etienne/workspace_C++/ghostbuster/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/etienne/workspace_C++/ghostbuster/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/etienne/workspace_C++/ghostbuster/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ghostbuster">
+				<Option output="/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/ghostbuster" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/etienne/workspace_C++/ghostbuster/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 ghostbuster"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ghostbuster/fast">
+				<Option output="/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/ghostbuster" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/etienne/workspace_C++/ghostbuster/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 ghostbuster/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/Constantes.h">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/Fantome.cpp">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/Fantome.h">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/Pacman.cpp">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/Pacman.h">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/Personnage.cpp">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/Personnage.h">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/ai.cpp">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/ai.h">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/main.cpp">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/sdlclg.cpp">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/sdlclg.h">
+			<Option target="ghostbuster"/>
+		</Unit>
+		<Unit filename="/home/etienne/workspace_C++/ghostbuster/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

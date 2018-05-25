@@ -1,0 +1,7 @@
+/opt/CLion/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/etienne/workspace_C++/ghostbuster
+CMake Error at CMakeLists.txt:20 (PKG_SEARCH_MODULE):
+  Unknown CMake command "PKG_SEARCH_MODULE".
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/etienne/workspace_C++/ghostbuster/cmake-build-debug/CMakeFiles/CMakeOutput.log".
