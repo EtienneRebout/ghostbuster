@@ -8,11 +8,17 @@
 #include "PacNode.h"
 #include "AleaNode.h"
 #include "Node.h"
+#include "global.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 
 using namespace std;
+
+namespace global
+{
+	array<array<int, 399>, 399> Mat;
+}
 
 void MatriceAdj()
 {
@@ -26,7 +32,7 @@ void MatriceAdj()
 	{
 		for(int j = 0; j < cpt; j++)
 		{
-			Mat[i][j] = 99;
+			global::Mat[i][j] = 99;
 		}
 	}
 
@@ -47,37 +53,37 @@ void MatriceAdj()
 			{
 				if(Tableau[i-1][j] != M)
 				{
-					Mat[map[i][j]][map[i-1][j]] = 1;
-					Mat[map[i-1][j]][map[i][j]] = 1;
+                    global::Mat[map[i][j]][map[i-1][j]] = 1;
+                    global::Mat[map[i-1][j]][map[i][j]] = 1;
 				}
 				if(Tableau[i+1][j] != M)
 				{
-					Mat[map[i][j]][map[i+1][j]] = 1;
-					Mat[map[i+1][j]][map[i][j]] = 1;
+                    global::Mat[map[i][j]][map[i+1][j]] = 1;
+                    global::Mat[map[i+1][j]][map[i][j]] = 1;
 				}
 				if(Tableau[i][j-1] != M)
 				{
-					Mat[map[i][j]][map[i][j-1]] = 1;
-					Mat[map[i][j-1]][map[i][j]] = 1;
+                    global::Mat[map[i][j]][map[i][j-1]] = 1;
+                    global::Mat[map[i][j-1]][map[i][j]] = 1;
 				}
 				if(Tableau[i][j+1] != M)
 				{
-					Mat[map[i][j]][map[i][j+1]] = 1;
-					Mat[map[i][j+1]][map[i][j]] = 1;
+                    global::Mat[map[i][j]][map[i][j+1]] = 1;
+                    global::Mat[map[i][j+1]][map[i][j]] = 1;
 				}
 
 			}
 		}	
 	}
-	Mat[190][208] = 1;
-	Mat[208][190] = 1;
+    global::Mat[190][208] = 1;
+    global::Mat[208][190] = 1;
 
 	for(int k = 0; k < cpt; k++)
 	{
 		for(int i = 0; i < cpt; i++)
 		{
 			for(int j = 0; j < cpt; j++)
-				Mat[i][j] = min(Mat[i][j],Mat[i][k]+Mat[k][j]);
+            global::Mat[i][j] = min(global::Mat[i][j],global::Mat[i][k]+global::Mat[k][j]);
 		}	
 	}
 

@@ -25,7 +25,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-
 	//Initialisation du générateur de nombres aléatoires
 	srand(static_cast<unsigned int>(time(0)));
 
@@ -117,11 +116,8 @@ int main(int argc, char *argv[])
         {
             //Bouger Pac Man selon la touche appuyée
             array<Fantome, 4> ghosts = {Bashful, Pokey, Shadow, Speedy};
-            /*ghosts[0] = Bashful;
-            ghosts[1] = Pokey;
-            ghosts[2] = Shadow;
-            ghosts[3] = Speedy;*/
-            EntryNode choose(ghosts, PacMan, Tableau, 3, true);
+            //cout << "1turn" << endl;
+            EntryNode choose(ghosts, PacMan, Tableau, 1, true);
             e = LireEvenement(choose.getDir());
 
             if(e == EVQuitter)

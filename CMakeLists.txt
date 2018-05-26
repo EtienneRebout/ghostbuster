@@ -15,7 +15,7 @@ add_executable(ghostbuster
         Personnage.cpp
         Personnage.h
         sdlclg.cpp
-        sdlclg.h Sources/PacNode.cpp Sources/PacNode.h Sources/GhostNode.cpp Sources/GhostNode.h Sources/AleaNode.cpp Sources/AleaNode.h Sources/Node.cpp Sources/Node.h Sources/Directions.h Sources/EntryNode.cpp Sources/EntryNode.h)
+        sdlclg.h Sources/PacNode.cpp Sources/PacNode.h Sources/GhostNode.cpp Sources/GhostNode.h Sources/AleaNode.cpp Sources/AleaNode.h Sources/Node.cpp Sources/Node.h Sources/Directions.h Sources/EntryNode.cpp Sources/EntryNode.h Sources/global.h)
 
 PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
 PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)

@@ -14,8 +14,6 @@
 #include <fstream>
 #include <vector>
 
-static array<array<int, 399>, 399> Mat;
-
 //class ai {
 //public:
 	void MatriceAdj();

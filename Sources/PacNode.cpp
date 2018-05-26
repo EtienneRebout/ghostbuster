@@ -17,13 +17,12 @@
 using namespace std;
 
 PacNode::PacNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
-                 int pr, Node& pa, bool r):
+                 int pr, Node& pa):
         parent(pa),
         fantomes(f),
         pac(p),
         niveau(n),
-        profondeur(pr),
-        root(r)
+        profondeur(pr)
 {
     choix = NONE;
     heuristique = 0;
@@ -60,8 +59,7 @@ void PacNode::next()
     }
 
     // Now the PN transmits its heuristic to its parent (if it's not the root node, i.e. parent = null)
-    if(!root)
-        parent.setH(heuristique);
+    parent.setH(heuristique);
 }
 
 Direction PacNode::getDir()

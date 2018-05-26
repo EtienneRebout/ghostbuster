@@ -18,10 +18,9 @@ private:
     Node& parent; // Référence vers le parent, pour lui transmettre les infos
     Direction choix; // La direction choisie par le Pacman, utile uniquement à la racine
     double heuristique; // La meilleure heuristique possible correspondant au "bon choix" de direction
-    bool root; // Indique si c'est le 1er PacNode (qui ne remontera rien)
 public:
     PacNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
-            int pr, Node& pa, bool r);
+            int pr, Node& pa);
     void next();
     Direction getDir();
 };

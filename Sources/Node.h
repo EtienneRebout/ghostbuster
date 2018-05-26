@@ -11,6 +11,7 @@ class Node {
 private:
     double heuristique;
     Direction choix;
+    int possib;
 public:
     void setH(int h);
     int getH();

@@ -3,6 +3,7 @@
 //
 
 #include "Node.h"
+#include <iostream>
 #include "Directions.h"
 
 using namespace std;
@@ -10,6 +11,7 @@ using namespace std;
 void Node::setH(int h)
 {
     heuristique = h;
+    //cout << h << "->" << heuristique <<endl;
 }
 
 int Node::getH()
@@ -17,6 +19,9 @@ int Node::getH()
     return heuristique;
 }
 
-void Node::plusPossib() {}
+void Node::plusPossib()
+{
+    possib ++;
+}
 
 void Node::setDir(Direction d) { choix = d; }
