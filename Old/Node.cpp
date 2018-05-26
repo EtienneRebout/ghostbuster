@@ -42,44 +42,37 @@ void next()
 	}
 }
 
-void moveG(int i, const array<Fantome>& f)
-{
-	if(i==4)
-	{
+void moveG(int i, const array<Fantome>& f) {
+	if (i == 4) {
 		Node noeud(f, pac, niveau, profondeur, this, false);
-	}
-	else
-	{
-		if (niveau[f[i].getY()-1][f[i].getX()] != M
-		&& f[i].getY()-1 != f[i].getOldY())
-		{
-			array<Fantome,4> f2(f);
+	} else {
+		if (niveau[f[i].getY() - 1][f[i].getX()] != M
+			&& f[i].getY() - 1 != f[i].getOldY()) {
+			array<Fantome, 4> f2(f);
 			f2[i].BougerHaut();
-			moveG(i+1, f2);
-			possib ++;
+			moveG(i + 1, f2);
+			possib++;
 		}
-		if (niveau[f[i].getY()+1][f[i].getX()]
-		&& f[i].getY()+1 != f[i].getOldY())
-		{
-			array<Fantome,4> f2(f);
+		if (niveau[f[i].getY() + 1][f[i].getX()]
+			&& f[i].getY() + 1 != f[i].getOldY()) {
+			array<Fantome, 4> f2(f);
 			f2[i].BougerBas();
-			moveG(i+1, f2);
-			possib ++;
+			moveG(i + 1, f2);
+			possib++;
 		}
-		if (niveau[f[i].getY()][f[i].getX()-1]
-		&& f[i].getX()-1 != f[i].getOldX())
-		{
-			array<Fantome,4> f2(f);
+		if (niveau[f[i].getY()][f[i].getX() - 1]
+			&& f[i].getX() - 1 != f[i].getOldX()) {
+			array<Fantome, 4> f2(f);
 			f2[i].BougerGauche();
-			moveG(i+1, f2);
-			possib ++;
+			moveG(i + 1, f2);
+			possib++;
 		}
-		if (niveau[f[i].getY()][f[i].getX()+1] != M
-		&& f[i].getX()+1 != f[i].getOldX())
-		{
-			array<Fantome,4> f2(f);
+		if (niveau[f[i].getY()][f[i].getX() + 1] != M
+			&& f[i].getX() + 1 != f[i].getOldX()) {
+			array<Fantome, 4> f2(f);
 			f2[i].BougerDroite();
-			moveG(i+1, f2);
-			possib ++;
+			moveG(i + 1, f2);
+			possib++;
 		}
+	}
 }

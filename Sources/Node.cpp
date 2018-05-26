@@ -3,6 +3,9 @@
 //
 
 #include "Node.h"
+#include "Directions.h"
+
+using namespace std;
 
 void Node::setH(int h)
 {
@@ -15,3 +18,5 @@ int Node::getH()
 }
 
 void Node::plusPossib() {}
+
+void Node::setDir(Direction d) { choix = d; }

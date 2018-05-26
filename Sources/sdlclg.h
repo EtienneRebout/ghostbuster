@@ -4,27 +4,28 @@
 // sdlclg.h
 // Interface de programmation graphique pour le cours de KA0 utilisation la
 // la libraire SDL 1.2.14-VC8
-// Joan-Sébastien Morales et Stéphane Chassé
-// Version 1.0 Création 25 octobre 2009
+// Joan-Sï¿½bastien Morales et Stï¿½phane Chassï¿½
+// Version 1.0 Crï¿½ation 25 octobre 2009
 // Version 1.1 Modification 27 octobre 2009
 //   -- Ajout de messages d'erreurs
 //   -- Ajout de la fonction RafraichirFenetre
 // Version 1.2 Modification 17 novembre 2009
 //   -- Ajout du type ImageId
-//   -- Ajout de l'énumération Evenement
+//   -- Ajout de l'ï¿½numï¿½ration Evenement
 //   -- Ajout de la fonction AttendreEvenement
 // Version 1.21 Modification 24 novembre 2009
 //   -- Correction d'un bug avec la fonction AttendreEvenement
 // Version 1.22 Modification 12 novembre 2013
 //   -- Ajout de la fonction non-bloquante LireEvenement
 // Version 1.23 Modification 4 mai 2017
-//   -- Correction d'un bug dans LireEvenement dû à SDL_PollEvent
+//   -- Correction d'un bug dans LireEvenement dï¿½ ï¿½ SDL_PollEvent
 ///////////////////////////////////////////////////////////////////////////////
 #ifdef _WIN32
 #include <SDL.h>
 #else
 #include <SDL/SDL.h>
 #endif
+#include "Directions.h"
 //#include <windows.h>
 //#include <vector>
 //#include <iostream>
@@ -32,12 +33,12 @@
 using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
-// Type de données utilisé pour conserver les numéros d'images
+// Type de donnï¿½es utilisï¿½ pour conserver les numï¿½ros d'images
 ///////////////////////////////////////////////////////////////////////////////
 typedef int ImageId;
 
 ///////////////////////////////////////////////////////////////////////////////
-// Liste des événements associés au clavier
+// Liste des ï¿½vï¿½nements associï¿½s au clavier
 ///////////////////////////////////////////////////////////////////////////////
 enum Evenement
 {
@@ -52,16 +53,16 @@ enum Evenement
 void Attendre(int Temps);
 ///////////////////////////////////////////////////////////////////////////////
 // InitialiserAffichage
-// Fait apparaître une fenêtre graphique
-// Intrant: Titre: Titre de la fenêtre
-//			Largeur: Largeur de la fenêtre en pixels
-//		    Hauteur: Hauteur de la fenêtre en pixels
+// Fait apparaï¿½tre une fenï¿½tre graphique
+// Intrant: Titre: Titre de la fenï¿½tre
+//			Largeur: Largeur de la fenï¿½tre en pixels
+//		    Hauteur: Hauteur de la fenï¿½tre en pixels
 // Extrant: Aucun
 ///////////////////////////////////////////////////////////////////////////////
 void InitialiserAffichage(string Titre, int Largeur, int Hauteur);
 ///////////////////////////////////////////////////////////////////////////////
 // RemplirFenetre
-// Colore toute la fenêtre d'une certaine couleur
+// Colore toute la fenï¿½tre d'une certaine couleur
 // Intrant: Rouge: Composante rouge de la couleur (0-255)
 //          Vert : Composante verte de la couleur (0-255)
 //          Bleu : Composante bleue de la couleur (0-255)
@@ -70,10 +71,10 @@ void InitialiserAffichage(string Titre, int Largeur, int Hauteur);
 void RemplirFenetre(int Rouge, int Vert, int Bleu);
 ///////////////////////////////////////////////////////////////////////////////
 // DessinerRectangle
-// Permet de dessiner un rectangle d'une certaine couleur dans la fenêtre
+// Permet de dessiner un rectangle d'une certaine couleur dans la fenï¿½tre
 // Intrant: PosX: Position horizontale du rectangle.
 //          PosY: Position verticale du rectangle.
-//          Le point (0,0) est en haut à gauche
+//          Le point (0,0) est en haut ï¿½ gauche
 //			Largeur: Largeur du rectangle en pixels
 //			Hauteur: Hauteur du rectangle en pixels
 //          Rouge: Composante rouge de la couleur (0-255)
@@ -84,26 +85,26 @@ void RemplirFenetre(int Rouge, int Vert, int Bleu);
 void DessinerRectangle(int PosX, int PosY, int Largeur, int Hauteur, int Rouge, int Vert, int Bleu);
 ///////////////////////////////////////////////////////////////////////////////
 // ChargerImage
-// Permet de charger une image du disque dur vers la mémoire
-// Le seul type d'image supporté est le bitmap (BMP)
-// Intrant: NomFichier: Nom du fichier image. Le fichier doit être dans le
-//                      même répertoire que le projet
-// Extrant: un numéro identifiant uniquement l'image
+// Permet de charger une image du disque dur vers la mï¿½moire
+// Le seul type d'image supportï¿½ est le bitmap (BMP)
+// Intrant: NomFichier: Nom du fichier image. Le fichier doit ï¿½tre dans le
+//                      mï¿½me rï¿½pertoire que le projet
+// Extrant: un numï¿½ro identifiant uniquement l'image
 ///////////////////////////////////////////////////////////////////////////////
 ImageId ChargerImage(string NomFichier);
 ///////////////////////////////////////////////////////////////////////////////
 // AfficherImage
-// Permet d'afficher une image à un certain endroit dans le fenêtre graphique
-// Intrant: Image: Numéro de l'image
+// Permet d'afficher une image ï¿½ un certain endroit dans le fenï¿½tre graphique
+// Intrant: Image: Numï¿½ro de l'image
 //			PosX: Position horizontale de l'image
 //          PosY: Position verticale de l'image
-//          Le point (0,0) est en haut à gauche
+//          Le point (0,0) est en haut ï¿½ gauche
 // Extrant: Aucun
 ///////////////////////////////////////////////////////////////////////////////
 void AfficherImage(ImageId Image, int PosX, int PosY);
 ///////////////////////////////////////////////////////////////////////////////
 // RafraichirFenetre
-// Mettre à jour la fenêtre d'affichage pour que les dernières modifications
+// Mettre ï¿½ jour la fenï¿½tre d'affichage pour que les derniï¿½res modifications
 // soient visibles
 // Intrant: Aucun
 // Extrant: Aucun
@@ -111,7 +112,7 @@ void AfficherImage(ImageId Image, int PosX, int PosY);
 void RafraichirFenetre();
 ///////////////////////////////////////////////////////////////////////////////
 // QuitterAffichage
-// Ferme la fenêtre graphique
+// Ferme la fenï¿½tre graphique
 ///////////////////////////////////////////////////////////////////////////////
 void QuitterAffichage();
 ///////////////////////////////////////////////////////////////////////////////
@@ -119,27 +120,27 @@ void QuitterAffichage();
 // Attend que l'usager appuie sur une touche du clavier
 // Cette fonction est bloquante!!
 // Intrant: Aucun
-// Extrant: L'événement correspondant à la touche du clavier:
-//   EVHaut: Flèche vers le haut
-//   EVBas:  Flèche vers le bas
-//   EVDroite: Flèche vers la droite
-//   EVGauche: Flèche vers la gauche
+// Extrant: L'ï¿½vï¿½nement correspondant ï¿½ la touche du clavier:
+//   EVHaut: Flï¿½che vers le haut
+//   EVBas:  Flï¿½che vers le bas
+//   EVDroite: Flï¿½che vers la droite
+//   EVGauche: Flï¿½che vers la gauche
 //   EVQuitter: Esc
 ///////////////////////////////////////////////////////////////////////////////
 Evenement AttendreEvenement();
 ///////////////////////////////////////////////////////////////////////////////
 // LireEvenement
-// Vérifie si l'usager a appuyé sur une touche du clavier
+// Vï¿½rifie si l'usager a appuyï¿½ sur une touche du clavier
 // Cette fonction n'est pas bloquante!!
 // Intrant: Aucun
-// Extrant: L'événement correspondant à la touche du clavier:
-//   EVHaut: Flèche vers le haut
-//   EVBas:  Flèche vers le bas
-//   EVDroite: Flèche vers la droite
-//   EVGauche: Flèche vers la gauche
+// Extrant: L'ï¿½vï¿½nement correspondant ï¿½ la touche du clavier:
+//   EVHaut: Flï¿½che vers le haut
+//   EVBas:  Flï¿½che vers le bas
+//   EVDroite: Flï¿½che vers la droite
+//   EVGauche: Flï¿½che vers la gauche
 //   EVQuitter: Esc
 ///////////////////////////////////////////////////////////////////////////////
-Evenement LireEvenement();
+Evenement LireEvenement(Direction choix);
 ///////////////////////////////////////////////////////////////////////////////
 // VerifierErreur
 // Permet d'afficher un message d'erreur

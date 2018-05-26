@@ -1,41 +1,25 @@
+#include "ai.h"
 #include "sdlclg.h"
 #include "Constantes.h"
-#include "Personnage.h"
 #include "Pacman.h"
+#include "Personnage.h"
 #include "Fantome.h"
+#include "GhostNode.h"
+#include "PacNode.h"
+#include "AleaNode.h"
+#include "Node.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 
 using namespace std;
 
-
-Evenement ChoisirEvenement()
-{
-	Evenement e = EVAucun;
-	
-	
-	
-	//Node root = new Node(
-	
-	return e;
-}
-
-
-
-
-void ChoisirRec(Objet** Tab, int profondeur)
-{
-	
-}
-
 void MatriceAdj()
 {
 	array<array<int, Largeur>, Hauteur> map;
 	
 	int cpt = Hauteur * Largeur;
-
-	array<array<int, 399>, 399> Mat;
+	//
 	vector<int> tmp;
 
 	for(int i = 0; i < cpt; i++)
@@ -97,6 +81,8 @@ void MatriceAdj()
 		}	
 	}
 
+	//cout << Mat[9+19*15][8+19*9] << endl;
+
 	// Pour accéder à la distance entre les cases A(X1,Y1) et B(X2,Y2), il faut lire Mat[X1+19*Y1][X2+19*Y2]
 
 	/*ofstream matrice;
@@ -112,10 +98,6 @@ void MatriceAdj()
 	matrice.close();*/
 }
 
-int heuristique()
-{
-
-}
 /*
 int main(int argc, char *argv[])
 {

@@ -13,12 +13,12 @@
 #include "AleaNode.h"
 #include "Node.h"
 #include "Directions.h"
+#include "EntryNode.h"
 #include <vector>
 using namespace std;
 
-PacNode::PacNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
-                 int pr, Node& pa, bool r):
-        parent(pa),
+EntryNode::EntryNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
+                 int pr, bool r):
         fantomes(f),
         pac(p),
         niveau(n),
@@ -30,7 +30,7 @@ PacNode::PacNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet,
     next();
 }
 
-void PacNode::next()
+void EntryNode::next()
 {
     // Creates a GN for each possible direction
     // The GN will update the heuristic and direction of this PN using their reference to it
@@ -58,13 +58,9 @@ void PacNode::next()
         nextPac.BougerDroite();
         GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,DROITE);
     }
-
-    // Now the PN transmits its heuristic to its parent (if it's not the root node, i.e. parent = null)
-    if(!root)
-        parent.setH(heuristique);
 }
 
-Direction PacNode::getDir()
+Direction EntryNode::getDir()
 {
     return choix;
 }

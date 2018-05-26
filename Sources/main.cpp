@@ -16,6 +16,11 @@
 #else
 #include <SDL/SDL_mixer.h>
 #endif
+#include "ai.h"
+#include "Node.h"
+#include "Directions.h"
+#include "PacNode.h"
+#include "EntryNode.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -100,6 +105,10 @@ int main(int argc, char *argv[])
 	bool Quitter = false;
 	int Random;
 
+    // Matrice d'adjacence
+    MatriceAdj();
+
+
 	//Boucle principale: jouer tant que l'usager n'a pas demandé de quitter
 	while(!Quitter)
 	{
@@ -107,8 +116,13 @@ int main(int argc, char *argv[])
         while (NbPoints != 0 && !Mort && !Quitter)
         {
             //Bouger Pac Man selon la touche appuyée
-            Node node();
-            e = LireEvenement();
+            array<Fantome, 4> ghosts = {Bashful, Pokey, Shadow, Speedy};
+            /*ghosts[0] = Bashful;
+            ghosts[1] = Pokey;
+            ghosts[2] = Shadow;
+            ghosts[3] = Speedy;*/
+            EntryNode choose(ghosts, PacMan, Tableau, 3, true);
+            e = LireEvenement(choose.getDir());
 
             if(e == EVQuitter)
             {
@@ -349,10 +363,10 @@ int main(int argc, char *argv[])
             Fuite = 0;
 
             // Flusher les événements qui peuvent s'avoir cumulés durant SDL_Delay
-            for (int i = 0; i < 100; i++)
+            /*for (int i = 0; i < 100; i++)
             {
                 e = LireEvenement();
-            }
+            }*/
             e = EVAucun;
         }
 	}

@@ -23,8 +23,6 @@ const int TEMPS_FUITE = 150;
 //V=Vide, M=Mur, P=Point
 enum Objet {M, V, P, W};
 
-enum Direction {NONE, HAUT, BAS, GAUCHE, DROITE};
-
 //Tableau de la carte
 static array<Objet,Largeur> ligne1 =
 { M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M};

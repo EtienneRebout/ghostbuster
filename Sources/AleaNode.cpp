@@ -2,7 +2,18 @@
 // Created by etienne on 25/05/18.
 //
 
+#include "ai.h"
+#include "sdlclg.h"
+#include "Constantes.h"
+#include "Pacman.h"
+#include "Personnage.h"
+#include "Fantome.h"
+#include "GhostNode.h"
+#include "PacNode.h"
 #include "AleaNode.h"
+#include "Node.h"
+#include <vector>
+using namespace std;
 
 AleaNode::AleaNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
                    int pr, Node& pa, int g):
@@ -15,6 +26,7 @@ AleaNode::AleaNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Obje
 {
     next();
     possib = 0;
+    heuristique = 0;
 }
 
 void AleaNode::next()
@@ -52,7 +64,25 @@ void AleaNode::next()
     }
     else
     {
-        // Computing heuristic
+        if(profondeur > 0)
+        {
+            PacNode PacNode(fantomes, pac, niveau, profondeur, *this, false);
+        }
+        else
+        {
+            // Computing heuristic
+            int x = pac.GetX();
+            int y = pac.GetY();
+
+            for(int i = 0; i < 4; i++)
+            {
+                heuristique += Mat[x+19*y][fantomes[i].GetX()+19*fantomes[i].GetY()];
+                if(niveau[x][y] == P)
+                    heuristique += 15;
+            }
+
+        }
+
 
 
         possib = 1;

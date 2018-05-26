@@ -2,21 +2,21 @@
 // sdlclg.cpp
 // Interface de programmation graphique pour le cours de KA0 utilisation la
 // la libraire SDL 1.2.14-VC8
-// Joan-Sébastien Morales et Stéphane Chassé
-// Version 1.0 Création 25 octobre 2009
+// Joan-Sï¿½bastien Morales et Stï¿½phane Chassï¿½
+// Version 1.0 Crï¿½ation 25 octobre 2009
 // Version 1.1 Modification 27 octobre 2009
 //   -- Ajout de messages d'erreurs
 //   -- Ajout de la fonction RafraichirFenetre
 // Version 1.2 Modification 17 novembre 2009
 //   -- Ajout du type ImageId
-//   -- Ajout de l'énumération Evenement
+//   -- Ajout de l'ï¿½numï¿½ration Evenement
 //   -- Ajout de la fonction AttendreEvenement
 // Version 1.21 Modification 24 novembre 2009
 //   -- Correction d'un bug avec la fonction AttendreEvenement
 // Version 1.22 Modification 12 novembre 2013
 //   -- Ajout de la fonction non-bloquante LireEvenement
 // Version 1.23 Modification 4 mai 2017
-//   -- Correction d'un bug dans LireEvenement dû à SDL_PollEvent
+//   -- Correction d'un bug dans LireEvenement dï¿½ ï¿½ SDL_PollEvent
 ///////////////////////////////////////////////////////////////////////////////
 
 #ifdef _WIN32
@@ -25,6 +25,7 @@
 #include <vector>
 #include <iostream>
 #include "sdlclg.h"
+#include "Directions.h"
 
 SDL_Surface *ecran = nullptr;
 vector<SDL_Surface*> Images;
@@ -55,7 +56,7 @@ void InitialiserAffichage(string Titre, int Largeur, int Hauteur)
 	SDL_Init(SDL_INIT_VIDEO);
 	ecran = SDL_SetVideoMode(Largeur, Hauteur, 32, SDL_HWSURFACE);
 
-	VerifierErreur(!ecran, "InitialiserAffichage: Impossible de charger le mode vidéo");
+	VerifierErreur(!ecran, "InitialiserAffichage: Impossible de charger le mode vidï¿½o");
 	SDL_WM_SetCaption(Titre.c_str(), 0);
 
 	SDL_EnableKeyRepeat(100, 100);
@@ -87,9 +88,9 @@ void DessinerRectangle(int PosX, int PosY, int Largeur, int Hauteur,
 	position.x = PosX;
 	position.y = PosY;
 	SDL_FillRect(rectangle, NULL, SDL_MapRGB(ecran->format, Rouge, Vert, Bleu));
-	// Collage de la surface sur l'écran
+	// Collage de la surface sur l'ï¿½cran
 	SDL_BlitSurface(rectangle, NULL, ecran, &position);
-	SDL_FreeSurface(rectangle); // Libération de la surface
+	SDL_FreeSurface(rectangle); // Libï¿½ration de la surface
 }
 ImageId ChargerImage(string NomFichier)
 {
@@ -102,7 +103,7 @@ ImageId ChargerImage(string NomFichier)
 }
 void AfficherImage(ImageId Image, int PosX, int PosY)
 {
-	VerifierErreur(Image<0 || static_cast<unsigned int>((Image)>Images.size()-1), "Numéro d'image invalide");
+	VerifierErreur(Image<0 || static_cast<unsigned int>((Image)>Images.size()-1), "Numï¿½ro d'image invalide");
 	VerifierErreur(PosX<0, "AfficherImage: PosX invalide");
 	VerifierErreur(PosY<0, "AfficherImage: PosY invalide");
 
@@ -145,23 +146,23 @@ void QuitterAffichage()
             case SDL_KEYDOWN:
                 switch(event.key.keysym.sym)
                 {
-                case SDLK_UP: // Flèche haut
+                case SDLK_UP: // Flï¿½che haut
                     e = EVHaut;
                     Valide=true;
                     break;
-                case SDLK_DOWN: // Flèche bas
+                case SDLK_DOWN: // Flï¿½che bas
                     e = EVBas;
                     Valide=true;
                     break;
-                case SDLK_RIGHT: // Flèche droite
+                case SDLK_RIGHT: // Flï¿½che droite
                     e = EVDroite;
                     Valide=true;
                     break;
-                case SDLK_LEFT: // Flèche gauche
+                case SDLK_LEFT: // Flï¿½che gauche
                     e =  EVGauche;
                     Valide=true;
                     break;
-                case SDLK_ESCAPE: // Appui sur la touche Echap, on arrête le programme
+                case SDLK_ESCAPE: // Appui sur la touche Echap, on arrï¿½te le programme
                     e = EVQuitter;
                     Valide=true;
                     break;
@@ -175,41 +176,25 @@ void QuitterAffichage()
 	return e;
 }*/
 
-Evenement LireEvenement()
+Evenement LireEvenement(Direction choix)
 {
 	Evenement e = EVAucun;
-	SDL_Event event;
-
-	if (SDL_PollEvent(&event))
+	switch(choix)
 	{
-        switch(event.type)
-        {
-        case SDL_QUIT:
-            e = EVQuitter;
-            break;
-        case SDL_KEYDOWN:
-            switch(event.key.keysym.sym)
-            {
-            case SDLK_UP: // Flèche haut
-                e = EVHaut;
-                break;
-            case SDLK_DOWN: // Flèche bas
-                e = EVBas;
-                break;
-            case SDLK_RIGHT: // Flèche droite
-                e = EVDroite;
-                break;
-            case SDLK_LEFT: // Flèche gauche
-                e =  EVGauche;
-                break;
-            case SDLK_ESCAPE: // Appui sur la touche Echap, on arrête le programme
-                e = EVQuitter;
-                break;
-            default:    // Shut up compiler warnings
-                break;
-            }
-            break;
-        }
+	case HAUT: // Flï¿½che haut
+		e = EVHaut;
+		break;
+	case BAS: // Flï¿½che bas
+		e = EVBas;
+		break;
+	case DROITE: // Flï¿½che droite
+		e = EVDroite;
+		break;
+	case GAUCHE: // Flï¿½che gauche
+		e =  EVGauche;
+		break;
+	default:    // Shut up compiler warnings
+		break;
 	}
 	return e;
 }

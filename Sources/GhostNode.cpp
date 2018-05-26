@@ -2,7 +2,18 @@
 // Created by etienne on 25/05/18.
 //
 
+#include "ai.h"
+#include "sdlclg.h"
+#include "Constantes.h"
+#include "Pacman.h"
+#include "Personnage.h"
+#include "Fantome.h"
 #include "GhostNode.h"
+#include "PacNode.h"
+#include "AleaNode.h"
+#include "Node.h"
+#include <vector>
+using namespace std;
 
 GhostNode::GhostNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
                      int pr, Node& pa, Direction d):
@@ -13,6 +24,7 @@ GhostNode::GhostNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Ob
         parent(pa),
         choix(d)
 {
+    heuristique = 0;
     next();
 }
 
@@ -45,5 +57,11 @@ void GhostNode::next()
         array<Fantome,4> f2(fantomes);
         f2[0].BougerDroite();
         AleaNode AleaNode(f2,pac,niveau,profondeur,*this,1);
+    }
+
+    if(heuristique > parent.getH())
+    {
+        parent.setH(heuristique);
+        parent.setDir(choix);
     }
 }
