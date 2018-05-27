@@ -48,11 +48,11 @@ bool Pacman::Bouger(int Evenement, bool Miroir)
 	}
 
 	//Teleporteur
-	if (Y_ == 9 && X_ == 0)
+	if (Y_ == 9 && X_ == 1)
 	{
 		X_ = 17;
 	}
-	else if (Y_ == 9 && X_ == 18)
+	else if (Y_ == 9 && X_ == 17)
 	{
 		X_ = 1;
     }

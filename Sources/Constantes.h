@@ -14,7 +14,7 @@ constexpr int Largeur = 19;
 constexpr int Hauteur = 21;
 constexpr int NbPixelsParCase = 32;
 //Ajoutez vos propres constantes ici...
-constexpr int VitesseFantome = 6; // Bougent à tous les 10 tours
+constexpr int VitesseFantome = 4; // Bougent à tous les 10 tours
 constexpr int MurMince = 4;
 
 const int TEMPS_FUITE = 150;

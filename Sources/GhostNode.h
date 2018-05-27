@@ -20,7 +20,7 @@ private:
 public:
     GhostNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
               int pr, Node& pa, Direction d);
-    void next();
+    double next();
     int getH();
 };
 

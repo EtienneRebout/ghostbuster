@@ -27,10 +27,8 @@ AleaNode::AleaNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Obje
 {
     possib = 0;
     heuristique = 0;
-    next();
 }
-
-void AleaNode::next()
+double AleaNode::next()
 {
     //cout << "A";
     if(ghost < 4)
@@ -40,7 +38,8 @@ void AleaNode::next()
         {
             array<Fantome,4> f2(fantomes);
             f2[ghost].BougerHaut();
-            AleaNode AleaNode(f2,pac,niveau,profondeur,*this,ghost+1);
+            AleaNode an = AleaNode(f2,pac,niveau,profondeur,*this,ghost+1);
+            heuristique += an.next();
             possib ++;
         }
         if (niveau[fantomes[ghost].GetY()+1][fantomes[ghost].GetX()]
@@ -48,7 +47,8 @@ void AleaNode::next()
         {
             array<Fantome,4> f2(fantomes);
             f2[ghost].BougerBas();
-            AleaNode AleaNode(f2,pac,niveau,profondeur,*this,ghost+1);
+            AleaNode an = AleaNode(f2,pac,niveau,profondeur,*this,ghost+1);
+            heuristique += an.next();
             possib ++;
         }
         if (niveau[fantomes[ghost].GetY()][fantomes[ghost].GetX()-1]
@@ -56,7 +56,8 @@ void AleaNode::next()
         {
             array<Fantome,4> f2(fantomes);
             f2[ghost].BougerGauche();
-            AleaNode AleaNode(f2,pac,niveau,profondeur,*this,ghost+1);
+            AleaNode an = AleaNode(f2,pac,niveau,profondeur,*this,ghost+1);
+            heuristique += an.next();
             possib ++;
         }
         if (niveau[fantomes[ghost].GetY()][fantomes[ghost].GetX()+1] != M
@@ -64,7 +65,8 @@ void AleaNode::next()
         {
             array<Fantome,4> f2(fantomes);
             f2[ghost].BougerDroite();
-            AleaNode AleaNode(f2,pac,niveau,profondeur,*this,ghost+1);
+            AleaNode an = AleaNode(f2,pac,niveau,profondeur,*this,ghost+1);
+            heuristique += an.next();
             possib ++;
         }
     }
@@ -72,29 +74,38 @@ void AleaNode::next()
     {
         if(profondeur > 0)
         {
-            PacNode PacNode(fantomes, pac, niveau, profondeur, *this);
+            PacNode pn = PacNode(fantomes, pac, niveau, profondeur, *this);
+            heuristique = pn.next();
         }
         else
         {
             // Computing heuristic
             int x = pac.GetX();
             int y = pac.GetY();
-    //cout << "B" << endl;
+            double distMin = 200;
+            heuristique = -2000.0;
             for(int i = 0; i < 4; i++)
             {
-                heuristique += global::Mat[x+19*y][fantomes[i].GetX()+19*fantomes[i].GetY()];
-                if(niveau[x][y] == P)
-                    heuristique += 15;
+                double dist = global::Mat[x+19*y][fantomes[i].GetX()+19*fantomes[i].GetY()];
+                distMin = min(dist, distMin);
+                heuristique = max(heuristique, (-5000.0)/dist);
             }
+
+            /*if (distMin < 2)
+                heuristique = -10000.0;
+            if (distMin > 15)
+                heuristique = 2000.0;*/
+
+            if(niveau[x][y] == P)
+                heuristique += POINT;
 
         }
 
         possib = 1;
     }
     heuristique = heuristique / possib;
-    //cout << ghost << ":" << heuristique << endl;
-    parent.setH(parent.getH() + heuristique);
-    //cout << parent.getH() << endl;
+
+    return heuristique;
 }
 
 void AleaNode::plusPossib()

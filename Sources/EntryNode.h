@@ -21,7 +21,7 @@ private:
 public:
     EntryNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
             int pr, bool r);
-    void next();
+    Direction next();
     Direction getDir();
 };
 

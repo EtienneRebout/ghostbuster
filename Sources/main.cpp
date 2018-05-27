@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	//Initialiser SDL_mixer
 	Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
 	//Pour que la musique soit jouée, il faut la loader.
-	Mix_Music *musique = Mix_LoadMUS("music/level.mid");;
+	Mix_Music *musique = Mix_LoadMUS("music/Dragonforce.mid");;
 
 	//Message d'erreur si on la trouve pas
 	if(!musique) {
@@ -107,18 +107,24 @@ int main(int argc, char *argv[])
     // Matrice d'adjacence
     MatriceAdj();
 
+    double victoires = 0;
+    double defaites = 0;
+
 
 	//Boucle principale: jouer tant que l'usager n'a pas demandé de quitter
 	while(!Quitter)
 	{
+        //cout << "Profondeur : " << prof << endl;
         //Boucle secondaire: jouer tant qu'il reste des points et que Pac Man est en vie
         while (NbPoints != 0 && !Mort && !Quitter)
         {
             //Bouger Pac Man selon la touche appuyée
             array<Fantome, 4> ghosts = {Bashful, Pokey, Shadow, Speedy};
             //cout << "1turn" << endl;
-            EntryNode choose(ghosts, PacMan, Tableau, 1, true);
-            e = LireEvenement(choose.getDir());
+            EntryNode choose(ghosts, PacMan, Tableau, 7, true);
+            e = LireEvenement(choose.next());
+
+            //cout << "X = " << PacMan.GetX() << "; Y = " << PacMan.GetY() << endl;
 
             if(e == EVQuitter)
             {
@@ -321,7 +327,7 @@ int main(int argc, char *argv[])
             //Rafraichir la fenêtre
             RafraichirFenetre();
             //Attendre 30 ms pour ralentir le jeu
-            SDL_Delay(30);
+            SDL_Delay(100);
         }
 
         //Afficher le bon message de fin de partie
@@ -330,10 +336,12 @@ int main(int argc, char *argv[])
             if (NbPoints == 0)
             {
                 AfficherImage(ImageGagne, 60, 280);
+                victoires++;
             }
             else
             {
                 AfficherImage(ImagePerdu, 60, 280);
+                defaites++;
             }
             //Attendre un peu
             RafraichirFenetre();
@@ -364,6 +372,8 @@ int main(int argc, char *argv[])
                 e = LireEvenement();
             }*/
             e = EVAucun;
+
+            cout << (victoires / defaites) * 100.0 <<  "% de victoires" << endl;
         }
 	}
 

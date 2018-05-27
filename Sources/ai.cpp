@@ -75,8 +75,8 @@ void MatriceAdj()
 			}
 		}	
 	}
-    global::Mat[190][208] = 1;
-    global::Mat[208][190] = 1;
+    /*global::Mat[190][208] = 1;
+    global::Mat[208][190] = 1;*/
 
 	for(int k = 0; k < cpt; k++)
 	{

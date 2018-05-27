@@ -25,41 +25,65 @@ PacNode::PacNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet,
         profondeur(pr)
 {
     choix = NONE;
-    heuristique = 0;
-    next();
+    heuristique = -50000;
 }
 
-void PacNode::next()
+double PacNode::next()
 {
     // Creates a GN for each possible direction
     // The GN will update the heuristic and direction of this PN using their reference to it
-    if (niveau[pac.GetY()-1][pac.GetX()] != M)
+    if (niveau[pac.GetY()-1][pac.GetX()] != M
+        && pac.GetY()-1 != pac.GetOldY()
+            )
     {
         Pacman nextPac(pac);
         nextPac.BougerHaut();
-        GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,HAUT);
+        GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,HAUT);
+        double x = gn.next();
+        if (niveau[pac.GetY()-1][pac.GetX()] == P)
+            x += POINT;
+
+        heuristique = max(x, heuristique);
     }
-    if (niveau[pac.GetY()+1][pac.GetX()])
+    if (niveau[pac.GetY()+1][pac.GetX()] != M
+        && pac.GetY()+1 != pac.GetOldY()
+        && !(pac.GetX() == 9 && pac.GetY() == 7))
     {
         Pacman nextPac(pac);
         nextPac.BougerBas();
-        GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,BAS);
+        GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,BAS);
+        double x = gn.next();
+        if (niveau[pac.GetY()+1][pac.GetX()] == P)
+            x += POINT;
+        heuristique = max(x, heuristique);
     }
-    if (niveau[pac.GetY()][pac.GetX()-1])
+    if (niveau[pac.GetY()][pac.GetX()-1] != M
+        && pac.GetX()-1 != pac.GetOldX()
+            )
     {
         Pacman nextPac(pac);
         nextPac.BougerGauche();
-        GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,GAUCHE);
+        GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,GAUCHE);
+        double x = gn.next();
+        if (niveau[pac.GetY()][pac.GetX()-1] == P)
+            x += POINT;
+        heuristique = max(x, heuristique);
     }
-    if (niveau[pac.GetY()][pac.GetX()+1] != M)
+    if (niveau[pac.GetY()][pac.GetX()+1] != M
+        && pac.GetX()+1 != pac.GetOldX()
+            )
     {
         Pacman nextPac(pac);
         nextPac.BougerDroite();
-        GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,DROITE);
+        GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,DROITE);
+        double x = gn.next();
+        if (niveau[pac.GetY()][pac.GetX()+1] == P)
+            x += POINT;
+        heuristique = max(x, heuristique);
     }
 
     // Now the PN transmits its heuristic to its parent (if it's not the root node, i.e. parent = null)
-    parent.setH(heuristique);
+    return heuristique;
 }
 
 Direction PacNode::getDir()

@@ -23,7 +23,7 @@ private:
 public:
     AleaNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
              int pr, Node& pa, int g);
-    void next();
+    double next();
     void plusPossib();
 };
 

@@ -14,6 +14,9 @@
 #include <fstream>
 #include <vector>
 
+#define POINT 250
+#define CERISE 100
+
 //class ai {
 //public:
 	void MatriceAdj();

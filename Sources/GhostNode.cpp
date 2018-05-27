@@ -25,43 +25,52 @@ GhostNode::GhostNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Ob
         choix(d)
 {
     heuristique = 0;
-    next();
 }
 
-void GhostNode::next()
+double GhostNode::next()
 {
+    for(int i = 0; i < 4; i ++)
+    {
+        if (fantomes[i].GetX() == pac.GetX() && fantomes[i].GetY() == pac.GetY())
+            return -100000;
+    }
     if (niveau[fantomes[0].GetY()-1][fantomes[0].GetX()] != M
         && fantomes[0].GetY()-1 != fantomes[0].GetOldY())
     {
         array<Fantome,4> f2(fantomes);
         f2[0].BougerHaut();
-        AleaNode AleaNode(f2,pac,niveau,profondeur,*this,1);
+        AleaNode an = AleaNode(f2,pac,niveau,profondeur,*this,1);
+        heuristique += an.next();
     }
     if (niveau[fantomes[0].GetY()+1][fantomes[0].GetX()]
         && fantomes[0].GetY()+1 != fantomes[0].GetOldY())
     {
         array<Fantome,4> f2(fantomes);
         f2[0].BougerBas();
-        AleaNode AleaNode(f2,pac,niveau,profondeur,*this,1);
+        AleaNode an = AleaNode(f2,pac,niveau,profondeur,*this,1);
+        heuristique += an.next();
     }
     if (niveau[fantomes[0].GetY()][fantomes[0].GetX()-1]
         && fantomes[0].GetX()-1 != fantomes[0].GetOldX())
     {
         array<Fantome,4> f2(fantomes);
         f2[0].BougerGauche();
-        AleaNode AleaNode(f2,pac,niveau,profondeur,*this,1);
+        AleaNode an = AleaNode(f2,pac,niveau,profondeur,*this,1);
+        heuristique += an.next();
     }
     if (niveau[fantomes[0].GetY()][fantomes[0].GetX()+1] != M
         && fantomes[0].GetX()+1 != fantomes[0].GetOldX())
     {
         array<Fantome,4> f2(fantomes);
         f2[0].BougerDroite();
-        AleaNode AleaNode(f2,pac,niveau,profondeur,*this,1);
+        AleaNode an = AleaNode(f2,pac,niveau,profondeur,*this,1);
+        heuristique += an.next();
     }
 
-    if(heuristique > parent.getH())
+    /*if(heuristique > parent.getH())
     {
         parent.setH(heuristique);
         parent.setDir(choix);
-    }
+    }*/
+    return heuristique;
 }

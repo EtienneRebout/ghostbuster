@@ -26,38 +26,75 @@ EntryNode::EntryNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Ob
         root(r)
 {
     choix = NONE;
-    heuristique = 0;
-    next();
+    heuristique = -50000;
 }
 
-void EntryNode::next()
+Direction EntryNode::next()
 {
     // Creates a GN for each possible direction
     // The GN will update the heuristic and direction of this PN using their reference to it
-    if (niveau[pac.GetY()-1][pac.GetX()] != M)
+    if (niveau[pac.GetY()-1][pac.GetX()] != M
+        && pac.GetY()-1 != pac.GetOldY()
+            )
     {
         Pacman nextPac(pac);
         nextPac.BougerHaut();
-        GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,HAUT);
+        GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,HAUT);
+        double x = gn.next();
+        //cout << "1:" << x << endl;
+        if(x > heuristique)
+        {
+            heuristique = x;
+            choix = HAUT;
+        }
     }
-    if (niveau[pac.GetY()+1][pac.GetX()])
+    if (niveau[pac.GetY()+1][pac.GetX()] != M
+        && pac.GetY()+1 != pac.GetOldY()
+        && !(pac.GetX() == 9 && pac.GetY() == 7))
     {
         Pacman nextPac(pac);
         nextPac.BougerBas();
-        GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,BAS);
+        GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,BAS);
+        double x = gn.next();
+        //cout << "2:" << x << endl;
+        if(x > heuristique)
+        {
+            heuristique = x;
+            choix = BAS;
+        }
     }
-    if (niveau[pac.GetY()][pac.GetX()-1])
+    if (niveau[pac.GetY()][pac.GetX()-1] != M
+        && pac.GetX()-1 != pac.GetOldX()
+            )
     {
         Pacman nextPac(pac);
         nextPac.BougerGauche();
-        GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,GAUCHE);
+        GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,GAUCHE);
+        double x = gn.next();
+        //cout << "3:" << x << endl;
+        if(x > heuristique)
+        {
+            heuristique = x;
+            choix = GAUCHE;
+        }
     }
-    if (niveau[pac.GetY()][pac.GetX()+1] != M)
+    if (niveau[pac.GetY()][pac.GetX()+1] != M
+        && pac.GetX()+1 != pac.GetOldX()
+            )
     {
         Pacman nextPac(pac);
         nextPac.BougerDroite();
-        GhostNode GhostNode(fantomes,pac,niveau,profondeur-1,*this,DROITE);
+        GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,DROITE);
+        double x = gn.next();
+        //cout << "4:" << x << endl;
+        if(x > heuristique)
+        {
+            heuristique = x;
+            choix = DROITE;
+        }
     }
+    //cout << choix << endl;
+    return choix;
 }
 
 Direction EntryNode::getDir()
