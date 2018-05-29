@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	//Initialiser SDL_mixer
 	Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
 	//Pour que la musique soit jouée, il faut la loader.
-	Mix_Music *musique = Mix_LoadMUS("music/Dragonforce.mid");;
+	Mix_Music *musique = Mix_LoadMUS("music/Africa.mid");;
 
 	//Message d'erreur si on la trouve pas
 	if(!musique) {
@@ -109,6 +109,9 @@ int main(int argc, char *argv[])
 
     double victoires = 0;
     double defaites = 0;
+    int score = 0;
+    int scoreT = 0;
+    int nbGames = 0;
 
 
 	//Boucle principale: jouer tant que l'usager n'a pas demandé de quitter
@@ -121,7 +124,7 @@ int main(int argc, char *argv[])
             //Bouger Pac Man selon la touche appuyée
             array<Fantome, 4> ghosts = {Bashful, Pokey, Shadow, Speedy};
             //cout << "1turn" << endl;
-            EntryNode choose(ghosts, PacMan, Tableau, 7, true);
+            EntryNode choose(ghosts, PacMan, Tableau, 8, true);
             e = LireEvenement(choose.next());
 
             //cout << "X = " << PacMan.GetX() << "; Y = " << PacMan.GetY() << endl;
@@ -143,6 +146,7 @@ int main(int argc, char *argv[])
             if (Tableau[PacMan.GetY()][PacMan.GetX()] == P)
             {
                 Tableau[PacMan.GetY()][PacMan.GetX()] = V;
+                score ++;
             }
 
             //Mettre les fantomes en mode fuite
@@ -200,7 +204,7 @@ int main(int argc, char *argv[])
                     Random = rand() % 4;
                     if (Fuite == 0)
                     {
-                        Bouger =  Shadow.BougerSuivre(Random);
+                        Bouger =  Shadow.BougerRandom(Random);
                     }
                     else
                     {
@@ -214,7 +218,7 @@ int main(int argc, char *argv[])
                     Random = rand() % 4;
                     if (Fuite == 0)
                     {
-                        Bouger = Speedy.BougerSuivre(Random);
+                        Bouger = Speedy.BougerRandom(Random);
                     }
                     else
                     {
@@ -327,7 +331,7 @@ int main(int argc, char *argv[])
             //Rafraichir la fenêtre
             RafraichirFenetre();
             //Attendre 30 ms pour ralentir le jeu
-            SDL_Delay(100);
+            SDL_Delay(1);
         }
 
         //Afficher le bon message de fin de partie
@@ -345,7 +349,7 @@ int main(int argc, char *argv[])
             }
             //Attendre un peu
             RafraichirFenetre();
-            SDL_Delay(2500);
+            SDL_Delay(200);
 
             for (int i = 0; i < Largeur; i++)
             {
@@ -373,7 +377,11 @@ int main(int argc, char *argv[])
             }*/
             e = EVAucun;
 
-            cout << (victoires / defaites) * 100.0 <<  "% de victoires" << endl;
+            cout << (victoires / (defaites + victoires)) * 100.0 <<  "% de victoires" << endl;
+            nbGames++;
+            scoreT += score;
+            cout << "Score moyen : " << scoreT/nbGames << endl;
+            score = 0;
         }
 	}
 

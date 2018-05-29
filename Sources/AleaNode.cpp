@@ -14,6 +14,7 @@
 #include "AleaNode.h"
 #include "global.h"
 #include <vector>
+#include <math.h>
 using namespace std;
 
 AleaNode::AleaNode(const array<Fantome, 4>& f, const Pacman& p, array<array<Objet, Largeur>, Hauteur> n,
@@ -88,8 +89,10 @@ double AleaNode::next()
             {
                 double dist = global::Mat[x+19*y][fantomes[i].GetX()+19*fantomes[i].GetY()];
                 distMin = min(dist, distMin);
-                heuristique = max(heuristique, (-5000.0)/dist);
+                //heuristique = max(heuristique, (-5000.0)/sqrt(dist));
             }
+
+            heuristique = -5000.0/sqrt(distMin);
 
             /*if (distMin < 2)
                 heuristique = -10000.0;

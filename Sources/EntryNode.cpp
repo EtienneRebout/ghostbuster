@@ -41,6 +41,8 @@ Direction EntryNode::next()
         nextPac.BougerHaut();
         GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,HAUT);
         double x = gn.next();
+        if (niveau[pac.GetY()-1][pac.GetX()] == P)
+            x += POINT;
         //cout << "1:" << x << endl;
         if(x > heuristique)
         {
@@ -57,6 +59,8 @@ Direction EntryNode::next()
         GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,BAS);
         double x = gn.next();
         //cout << "2:" << x << endl;
+        if (niveau[pac.GetY()+1][pac.GetX()] == P)
+            x += POINT;
         if(x > heuristique)
         {
             heuristique = x;
@@ -71,6 +75,8 @@ Direction EntryNode::next()
         nextPac.BougerGauche();
         GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,GAUCHE);
         double x = gn.next();
+        if (niveau[pac.GetY()][pac.GetX()-1] == P)
+            x += POINT;
         //cout << "3:" << x << endl;
         if(x > heuristique)
         {
@@ -86,6 +92,8 @@ Direction EntryNode::next()
         nextPac.BougerDroite();
         GhostNode gn = GhostNode(fantomes,nextPac,niveau,profondeur-1,*this,DROITE);
         double x = gn.next();
+        if (niveau[pac.GetY()][pac.GetX()+1] == P)
+            x += POINT;
         //cout << "4:" << x << endl;
         if(x > heuristique)
         {

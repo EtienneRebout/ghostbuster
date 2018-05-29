@@ -1,2 +1,2 @@
-g++ -o Pacman Sources/main.cpp Sources/Fantome.cpp Sources/Pacman.cpp Sources/Personnage.cpp Sources/sdlclg.cpp -lSDL -lSDL_mixer -std=c++11
+g++ -o Pacman Sources/*.cpp -lSDL -lSDL_mixer -std=c++11 -O3
 
