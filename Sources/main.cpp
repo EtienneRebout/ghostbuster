@@ -376,8 +376,11 @@ int main(int argc, char *argv[])
                 e = LireEvenement();
             }*/
             e = EVAucun;
-
-            cout << (victoires / (defaites + victoires)) * 100.0 <<  "% de victoires" << endl;
+		
+	    cout << "===========================" << endl;
+	    cout << "Partie " << nbGames << " finie." << endl;
+	    cout << "Score: " << score << endl;
+            cout << (victoires / nbGames) * 100.0 <<  "% de victoires" << endl;
             nbGames++;
             scoreT += score;
             cout << "Score moyen : " << scoreT/nbGames << endl;

@@ -92,7 +92,7 @@ double AleaNode::next()
                 //heuristique = max(heuristique, (-5000.0)/sqrt(dist));
             }
 
-            heuristique = -5000.0/sqrt(distMin);
+            heuristique = -500.0/sqrt(distMin);
 
             /*if (distMin < 2)
                 heuristique = -10000.0;

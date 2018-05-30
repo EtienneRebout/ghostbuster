@@ -14,7 +14,7 @@
 #include <fstream>
 #include <vector>
 
-#define POINT 250
+#define POINT 1000
 #define CERISE 100
 
 //class ai {
