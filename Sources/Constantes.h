@@ -20,7 +20,7 @@ constexpr int MurMince = 4;
 const int TEMPS_FUITE = 150;
 
 //Énumération pour représenter une case du labyrinthe
-//V=Vide, M=Mur, P=Point
+//V=Vide, M=Mur, P=Point, W=Cerise
 enum Objet {M, V, P, W};
 
 //Tableau de la carte

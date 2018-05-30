@@ -79,6 +79,9 @@ double PacNode::next()
         double x = gn.next();
         if (niveau[pac.GetY()][pac.GetX()+1] == P)
             x += POINT;
+        if (niveau[pac.GetY()][pac.GetX()+1] == W)
+            x += CERISE;
+	
         heuristique = max(x, heuristique);
     }
 

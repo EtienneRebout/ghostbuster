@@ -367,8 +367,8 @@ int main(int argc, char *argv[])
             Speedy.SetX(9);     Speedy.SetY(9);
 
             Mort = Miroir = false;
-            NbPoints = 1;
             Fuite = 0;
+	    nbGames++;
 
             // Flusher les événements qui peuvent s'avoir cumulés durant SDL_Delay
             /*for (int i = 0; i < 100; i++)
@@ -378,13 +378,15 @@ int main(int argc, char *argv[])
             e = EVAucun;
 		
 	    cout << "===========================" << endl;
-	    cout << "Partie " << nbGames << " finie." << endl;
+	    cout << "Partie #" << nbGames << " ........." << ((NbPoints == 0) ? " VICTOIRE" : " DEFAITE") << endl;
 	    cout << "Score: " << score << endl;
             cout << (victoires / nbGames) * 100.0 <<  "% de victoires" << endl;
-            nbGames++;
             scoreT += score;
             cout << "Score moyen : " << scoreT/nbGames << endl;
             score = 0;
+
+	    NbPoints = 1;
+
         }
 	}
 
