@@ -331,7 +331,7 @@ int main(int argc, char *argv[])
             //Rafraichir la fenêtre
             RafraichirFenetre();
             //Attendre 30 ms pour ralentir le jeu
-            SDL_Delay(1);
+            SDL_Delay(20);
         }
 
         //Afficher le bon message de fin de partie

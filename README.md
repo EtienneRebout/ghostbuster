@@ -10,3 +10,10 @@ Note: Vous devez vous assurer que les paquets suivants sont installés: `g++ lib
 
 ![screenshot at 2016-09-23 11_04_50](https://cloud.githubusercontent.com/assets/6194072/18793261/e78e80c2-8187-11e6-8595-bf63733eac18.png)
 
+
+# Projet IA
+Projet du module IA à l'INSA de Rennes par Daniel Haus et Etienne Rebout. Le projet a été fait à partir du code développé par cet étudiant à la CEGEP (cf paragraphes ci-dessus).
+
+Le moteur de l'IA utilise un algorithme Expectimax, semblable à l'algorithme A*. Pour le lancer depuis Linux, il faut se placer sur le répertoire du projet (ghostbuster) et lancer la commande dans commandline.txt.
+
+Pour changer la musique, il faut simplesment changer le path dans Sources/main.cpp. Pareil pour les icônes.
